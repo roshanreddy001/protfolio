@@ -1,0 +1,64 @@
+.section {
+    padding: 8rem 0;
+}
+
+.heading {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    color: white;
+}
+
+.list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.degree {
+    font-size: 1.25rem;
+    color: white;
+    font-family: var(--font-heading);
+}
+
+.year {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.institution {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.details {
+    color: rgba(238, 241, 245, 0.6);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}

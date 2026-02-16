@@ -1,0 +1,115 @@
+.section {
+    padding: 10rem 0;
+    position: relative;
+    /* Basic background to ensure readability over frames if needed, but glassmorphism handled in items */
+}
+
+.heading {
+    font-size: 3rem;
+    margin-bottom: 5rem;
+    text-align: center;
+    color: white;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    padding-left: 3rem;
+}
+
+.item {
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.item:last-child {
+    margin-bottom: 0;
+}
+
+.marker {
+    position: absolute;
+    left: -3.6rem;
+    /* Adjust based on padding + border + marker width */
+    top: 0.5rem;
+    width: 20px;
+    height: 20px;
+    background: var(--background);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.content:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.year {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.company {
+    display: block;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: rgba(238, 241, 245, 0.8);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 5rem 0;
+    }
+
+    .heading {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .timeline {
+        padding-left: 1.5rem;
+    }
+
+    .marker {
+        left: -1.5rem;
+        width: 12px;
+        height: 12px;
+        top: 0.5rem;
+        border-width: 2px;
+    }
+
+    .content {
+        padding: 1.5rem;
+    }
+
+    .title {
+        font-size: 1.25rem;
+    }
+}

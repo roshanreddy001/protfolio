@@ -1,0 +1,28 @@
+.main {
+  position: relative;
+  min-height: 100vh;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 10;
+  /* Content floats above the canvas */
+}
+
+.heroSection {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* Add protection gradient so text is readable over frames */
+  background: radial-gradient(circle at center, rgba(5, 5, 16, 0.4) 0%, rgba(5, 5, 16, 0.8) 100%);
+}
+
+.section {
+  min-height: 100vh;
+  padding: 100px 0;
+  background: rgba(5, 5, 16, 0.7);
+  /* translucent background for readability */
+  backdrop-filter: blur(10px);
+}

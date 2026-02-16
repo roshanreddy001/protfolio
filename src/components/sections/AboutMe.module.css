@@ -1,0 +1,37 @@
+.section {
+    padding: 8rem 0;
+    position: relative;
+    /* Clean background or glass effect if preferred */
+}
+
+.heading {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: white;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.textWrapper {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: rgba(238, 241, 245, 0.8);
+    margin-bottom: 1.5rem;
+}
+
+.text:last-child {
+    margin-bottom: 0;
+}

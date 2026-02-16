@@ -1,0 +1,91 @@
+.hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    /* We rely on page.js layout to place frames behind */
+}
+
+.content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.title {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.name {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    color: rgba(238, 241, 245, 0.7);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+.scrollIndicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .name {
+        font-size: 2.5rem;
+        /* Slightly smaller for better fit on all phones */
+        margin-bottom: 1rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+        padding: 0 1rem;
+        /* Prevent edge-to-edge text */
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 2rem;
+    }
+}
