@@ -43,10 +43,23 @@ export default function FrameSequence() {
             const imgs = [];
             const promises = [];
 
+
+            // Determine base path based on screen width
+            let basePath = '/frames_optimized';
+            let extension = 'webp';
+
+            if (window.innerWidth < 768) {
+                basePath = '/frames_mobile';
+                extension = 'png';
+            } else if (window.innerWidth < 1024) {
+                basePath = '/frames_tablet';
+                extension = 'png';
+            }
+
             for (let i = 1; i <= frameCount; i++) {
                 const promise = new Promise((resolve, reject) => {
                     const img = new Image();
-                    img.src = `/frames/frame_${i.toString().padStart(4, '0')}.png`;
+                    img.src = `${basePath}/frame_${i.toString().padStart(4, '0')}.${extension}`;
                     img.onload = () => {
                         setLoadingProgress(prev => prev + (1 / frameCount) * 100);
                         resolve(img);
