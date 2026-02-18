@@ -43,14 +43,6 @@ export default function Projects() {
                         <GlassCard key={index} className={styles.card}>
                             <div className={styles.cardHeader}>
                                 <span className={styles.date}>{project.date}</span>
-                                <div className={styles.links}>
-                                    <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="Github">
-                                        <Github size={20} />
-                                    </a>
-                                    <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
-                                        <ExternalLink size={20} />
-                                    </a>
-                                </div>
                             </div>
 
                             <h3 className={styles.title}>{project.title}</h3>
@@ -60,6 +52,25 @@ export default function Projects() {
                                 {project.tech.map(t => (
                                     <span key={t} className={styles.tag}>{t}</span>
                                 ))}
+                            </div>
+
+                            <div className={styles.actions}>
+                                <Button
+                                    href={project.link}
+                                    variant="secondary"
+                                    className={styles.projectBtn}
+                                    target="_blank"
+                                >
+                                    View Project <ExternalLink size={16} />
+                                </Button>
+                                <Button
+                                    href={project.github}
+                                    variant="secondary"
+                                    className={styles.projectBtn}
+                                    target="_blank"
+                                >
+                                    GitHub <Github size={16} />
+                                </Button>
                             </div>
                         </GlassCard>
                     ))}
