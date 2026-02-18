@@ -5,16 +5,22 @@ import styles from './Education.module.css';
 
 const education = [
     {
-        degree: "B.Tech in Computer Science",
-        institution: "University of Technology", // Placeholder
-        year: "2021 - 2025",
-        details: "Specializing in AI/ML. GPA: 3.8/4.0. Relevant coursework: Data Structures, Algorithms, Deep Learning."
+        degree: "INTEGRATED M.Tech in Computer Science",
+        institution: "Vellore Institute of Technology", // Placeholder
+        year: "2023 - 2028",
+        details: "Specializing in AI/ML. GPA: 8.61 Relevant coursework: Data Structure & Algorithms,Web Development, Machine Learning, Deep Learning."
     },
     {
-        degree: "High School Diploma",
-        institution: "City High School",
-        year: "2019 - 2021",
-        details: "Major in Science and Mathematics."
+        degree: "Intermediate(MPC)",
+        institution: "Srichaitanya Junior College",
+        year: "2021 - 2023",
+        details: "Percentage: 89%"
+    },
+    {
+        degree: "10th Grade",
+        institution: "bhashyam public School",
+        year: "2021",
+        details: "Percentage: 100%"
     }
 ];
 

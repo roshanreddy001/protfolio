@@ -9,11 +9,9 @@ const skills = [
     { name: 'JavaScript', level: 80 },
     { name: 'React', level: 95 },
     { name: 'Node.js', level: 85 },
-    { name: 'ML Algorithms', level: 80 },
+    { name: 'express', level: 80 },
     { name: 'Python', level: 80 },
     { name: 'TensorFlow', level: 80 },
-    { name: 'Next.js', level: 80 },
-    { name: 'Firebase', level: 80 },
 ];
 
 const SkillBar = ({ name, level, index }) => {

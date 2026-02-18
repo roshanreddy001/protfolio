@@ -44,17 +44,9 @@ export default function FrameSequence() {
             const promises = [];
 
 
-            // Determine base path based on screen width
-            let basePath = '/frames_optimized';
-            let extension = 'webp';
-
-            if (window.innerWidth < 768) {
-                basePath = '/frames_mobile';
-                extension = 'png';
-            } else if (window.innerWidth < 1024) {
-                basePath = '/frames_tablet';
-                extension = 'png';
-            }
+            // Use main frames for all devices
+            const basePath = '/frames_optimized';
+            const extension = 'webp';
 
             for (let i = 1; i <= frameCount; i++) {
                 const promise = new Promise((resolve, reject) => {

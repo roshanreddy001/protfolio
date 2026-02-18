@@ -13,7 +13,7 @@ export default function Footer() {
 
                     {/* Brand & Quote */}
                     <div className={styles.brandSection}>
-                        <h3 className={styles.logo}>Roshna Reddy Basava</h3>
+                        <h3 className={styles.logo}>Roshan Reddy Basava</h3>
                         <p className={styles.quote}>
                             "Building the future, one pixel at a time."
                         </p>

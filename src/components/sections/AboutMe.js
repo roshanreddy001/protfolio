@@ -25,15 +25,15 @@ export default function AboutMe() {
                         transition={{ delay: 0.2 }}
                     >
                         <p className={styles.text}>
-                            Full Stack Developer | Machine Learning Enthusiast
+                            Full Stack Developer | AI Systems Builder
                         </p>
                         <p className={styles.text}>
-                            Computer Science graduate with hands-on experience in MERN stack development, database systems (SQL & MongoDB), and implementation of Machine Learning and Deep Learning algorithms.
-                            Focused on building practical, scalable, and performance-driven applications.
+                            I design and develop high-performance full stack applications powered by intelligent systems. With hands-on experience in MERN stack development, database architecture, and Machine Learning implementation, I focus on building scalable platforms that merge software engineering with AI-driven decision making.
+                        </p>
+                        <p className={styles.text}>
+                            From integrating existing LLMs into real-world applications to developing responsive user interfaces and optimized backend systems, I approach every project with performance, clarity, and long-term scalability in mind.
 
-                            My focus is on solving real-world problems through code, whether it&apos;s optimizing
-                            neural networks or crafting pixel-perfect user interfaces. I thrive in varying environments
-                            where performance and usability are paramount.
+                            My goal is to engineer systems that learn, adapt, and solve meaningful real-world problems.
                         </p>
                     </motion.div>
                 </div>

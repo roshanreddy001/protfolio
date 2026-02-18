@@ -7,18 +7,18 @@ import styles from './Projects.module.css';
 
 const projects = [
     {
-        title: "StreakCounter", // Placeholder
+        title: "StreakCounter",
         date: "2025",
-        description: "A high-performance AI integration platform building next-gen neural interfaces.",
-        tech: ["Next.js", "TensorFlow", "WebGL"],
+        description: "A high-performance academic streak tracking platform designed to monitor daily consistency from day one to the present. Built with a fully responsive UI, it stores structured progress data in MongoDB and generates personalized academic roadmaps based on user data limitations. Integrated with existing LLMs to intelligently guide goal tracking, milestone planning, and long-term productivity optimization.",
+        tech: ["React", "HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "LLM Integration"],
         link: "#",
         github: "#"
     },
     {
-        title: "Neon Nexus", // Placeholder
+        title: "Gesture2Speak",
         date: "2024",
-        description: "Cyberpunk aesthetic e-commerce dashboard with real-time analytics.",
-        tech: ["React", "Three.js", "Firebase"],
+        description: "An AI-powered gesture-to-speech translation system that converts hand gestures into real-time spoken output supporting 30+ languages. Built using a lightweight TensorFlow CDN model for efficient browser-based inference, with a Flask backend handling processing logic. Integrated with existing LLMs to enhance contextual accuracy, making communication seamless and accessible.",
+        tech: ["TensorFlow Lite (CDN)", "Flask", "Python", "LLM Integration", "JavaScript", "Speech Synthesis API"],
         link: "#",
         github: "#"
     },
