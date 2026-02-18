@@ -1,65 +1,103 @@
 .section {
     padding: 8rem 0;
     position: relative;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2), transparent);
+    /* Dark background to make glass pop */
+    background: radial-gradient(circle at 50% 50%, rgba(20, 20, 30, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 .heading {
-    font-size: 3rem;
-    margin-bottom: 4rem;
+    font-size: 3.5rem;
+    margin-bottom: 5rem;
     text-align: center;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 4rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 6rem;
     max-width: 1000px;
     margin: 0 auto;
 }
 
+/* Glass Container for each skill */
+/* Glass Container for each skill - Removed container styling */
 .skillContainer {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
 }
 
 .skillHeader {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.8rem;
     font-family: var(--font-heading);
+}
+
+.skillHeader span:first-child {
+    font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
 }
 
 .percentage {
     color: var(--accent);
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.4);
 }
 
+/* Glossy Track */
+/* Glossy Track - Quantum Flow Style */
 .track {
     width: 100%;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.05);
+    height: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Subtle glass border */
     border-radius: 99px;
     overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+/* The Glossy Bar */
 .bar {
     height: 100%;
     background: var(--accent);
-    box-shadow: 0 0 10px var(--accent-glow);
     border-radius: 99px;
+    position: relative;
+    /* Glow effect */
+    box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.5);
+}
+
+/* Shine effect on the bar */
+.bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+    border-radius: 99px 99px 0 0;
 }
 
 @media (max-width: 768px) {
     .section {
-        padding: 4rem 0;
+        padding: 5rem 0;
     }
 
     .heading {
-        font-size: 2rem;
-        margin-bottom: 2.5rem;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
     }
 
     .grid {
-        gap: 2rem;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 }

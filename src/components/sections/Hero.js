@@ -57,7 +57,7 @@ export default function Hero() {
                             </Button>
                             <Button
                                 href="#contact"
-                                variant="secondary"
+                                variant="primary"
                                 onClick={(e) => {
                                     e.preventDefault();
                                     if (window.lenis) {

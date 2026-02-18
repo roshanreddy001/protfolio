@@ -64,66 +64,91 @@
 
 .form {
     flex: 1;
-    min-width: 280px;
-    background: rgba(255, 255, 255, 0.02);
-    padding: 3rem;
+    min-width: 320px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
 }
 
 .inputGroup {
     position: relative;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .input,
 .textarea {
     width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
     font-size: 1rem;
     color: white;
     outline: none;
     font-family: var(--font-sans);
-    transition: border-color 0.3s;
+    transition: all 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.2);
 }
 
 .label {
     position: absolute;
-    left: 0;
+    left: 1rem;
     top: 1rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.5);
     pointer-events: none;
     transition: all 0.3s ease;
     font-size: 1rem;
+    background: transparent;
+    padding: 0 0.25rem;
 }
 
 .active {
-    top: -1.2rem;
+    top: -0.7rem;
+    left: 0.8rem;
     font-size: 0.8rem;
     color: var(--accent);
+    background: #0a0a0a;
+    /* Matches page bg to hide line through label */
 }
 
+/* Remove the old underline */
 .underline {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 1px;
-    background: var(--accent);
-    transition: width 0.3s ease;
-}
-
-.underlineActive {
-    width: 100%;
+    display: none;
 }
 
 .submitBtn {
     width: 100%;
     margin-top: 1rem;
+    padding: 1rem;
+}
+
+.successMessage {
+    color: #4ade80;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.errorMessage {
+    color: #f87171;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
@@ -137,6 +162,7 @@
 
     .flexWrapper {
         gap: 3rem;
+        flex-direction: column;
     }
 
     .info,
@@ -144,7 +170,12 @@
         min-width: 100%;
     }
 
+    .row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
     .form {
-        padding: 2rem;
+        padding: 1.5rem;
     }
 }

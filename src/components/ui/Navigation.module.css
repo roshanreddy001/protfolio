@@ -10,9 +10,15 @@
 
 .scrolled {
     padding: 1rem 0;
-    background: rgba(5, 5, 16, 0.6);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(10, 10, 20, 0.75);
+    /* Deep, rich background */
+    backdrop-filter: blur(24px) saturate(180%);
+    /* Heavy blur + saturation for "gloss" */
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    /* Crisper border */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    /* Depth shadow */
 }
 
 .navContainer {

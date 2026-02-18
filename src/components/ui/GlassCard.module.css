@@ -1,7 +1,10 @@
 .cardContainer {
   position: relative;
-  display: inline-block;
+  display: flex;
+  /* Changed from inline-block to flex for better sizing */
   width: 100%;
+  height: 100%;
+  /* Ensure it takes full height from parent */
 }
 
 .glassCard {
@@ -15,6 +18,12 @@
   overflow: hidden;
   transform-style: preserve-3d;
   transition: box-shadow 0.3s ease;
+
+  /* Layout fixes for equal height */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .glassCard:hover {
@@ -27,11 +36,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
-    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 80%
-  );
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 80%);
   opacity: 0;
   transition: opacity 0.5s;
   pointer-events: none;
@@ -46,4 +53,8 @@
   position: relative;
   z-index: 2;
   padding: 2rem;
+  flex-grow: 1;
+  /* Pushes content/footer nicely */
+  display: flex;
+  flex-direction: column;
 }

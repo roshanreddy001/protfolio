@@ -7,10 +7,11 @@ import Hero from '@/components/sections/Hero';
 import AboutMe from '@/components/sections/AboutMe';
 import Skills from '@/components/sections/Skills';
 import Projects from '@/components/sections/Projects';
-import Experience from '@/components/sections/Experience';
+
 import Education from '@/components/sections/Education';
 import Achievements from '@/components/sections/Achievements';
 import Contact from '@/components/sections/Contact';
+import Footer from '@/components/sections/Footer';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -38,8 +39,7 @@ export default function Home() {
                 {/* 4. Projects */}
                 <Projects />
 
-                {/* 5. Experience / Internship */}
-                <Experience />
+                {/* 5. Experience / Internship - Removed */}
 
                 {/* 6. Education */}
                 <Education />
@@ -52,6 +52,9 @@ export default function Home() {
 
                 {/* 10. Contact */}
                 <Contact />
+
+                {/* 11. Footer */}
+                <Footer />
 
             </div>
         </main>

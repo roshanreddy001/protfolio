@@ -32,6 +32,12 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  /* Improved Readability */
+  line-height: 1.7;
+  font-size: 1.05rem;
+  /* Slightly larger base size */
+  letter-spacing: 0.01em;
+  /* Better character distinction */
 }
 
 /* Custom Scrollbar for non-lenis browsers */
