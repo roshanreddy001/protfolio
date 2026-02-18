@@ -55,12 +55,26 @@
 
 .welcomeSubtext {
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    /* Slightly larger */
     font-weight: 400;
-    color: var(--accent);
-    letter-spacing: 0.3em;
+    letter-spacing: 0.4em;
+    /* Cinematic wide spacing */
     text-transform: uppercase;
     margin: 0;
+
+    /* Beautiful "Champagne/Silver" Gradient */
+    background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 50%, #f1f5f9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Soft Glow */
+    filter: drop-shadow(0 0 8px rgba(161, 196, 253, 0.4));
+
+    position: relative;
+    padding-left: 0.4em;
+    /* Optical balance for letter-spacing */
 }
 
 @media (max-width: 768px) {
