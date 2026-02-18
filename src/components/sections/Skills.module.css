@@ -22,46 +22,57 @@
 }
 
 /* Glass Container for each skill */
-/* Glass Container for each skill - Removed container styling */
 .skillContainer {
     margin-bottom: 2rem;
     position: relative;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skillContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .skillHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     font-family: var(--font-heading);
 }
 
 .skillHeader span:first-child {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     letter-spacing: 0.5px;
+    font-weight: 500;
 }
 
 .percentage {
     color: var(--accent);
     font-weight: 600;
-    text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.4);
+    text-shadow: 0 0 10px var(--accent);
 }
 
 /* Glossy Track */
-/* Glossy Track - Quantum Flow Style */
 .track {
     width: 100%;
-    height: 14px;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    /* Subtle glass border */
+    height: 10px;
+    /* Sleeker track */
+    background: rgba(255, 255, 255, 0.05);
+    /* Slightly lighter for contrast */
+    backdrop-filter: blur(4px);
     border-radius: 99px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* The Glossy Bar */
@@ -70,25 +81,17 @@
     background: var(--accent);
     border-radius: 99px;
     position: relative;
-    /* Glow effect */
-    box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.5);
-}
-
-/* Shine effect on the bar */
-.bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
-    border-radius: 99px 99px 0 0;
+    /* Stronger Neon Glow */
+    box-shadow:
+        0 0 10px var(--accent),
+        0 0 20px var(--accent);
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (max-width: 768px) {
     .section {
-        padding: 5rem 0;
+        padding: 6rem 0;
+        /* More breathing room top */
     }
 
     .heading {
@@ -98,6 +101,14 @@
 
     .grid {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 1.5rem;
+        /* Tighter gap for mobile stack */
+        padding: 0 1rem;
+        /* Prevent edge touching */
+    }
+
+    .skillContainer {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
     }
 }

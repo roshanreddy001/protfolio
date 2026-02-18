@@ -26,10 +26,12 @@
 }
 
 .text {
-    font-size: 1.125rem;
+    font-size: 1.15rem;
     line-height: 1.8;
-    color: rgba(238, 241, 245, 0.8);
+    color: rgba(238, 241, 245, 0.95);
+    /* High opacity for readability */
     margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .text:last-child {

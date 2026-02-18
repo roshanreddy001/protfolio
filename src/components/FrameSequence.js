@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useScroll, useTransform, useSpring, motion, useMotionValueEvent } from 'framer-motion';
 import styles from './FrameSequence.module.css';
 
-const frameCount = 160;
+const frameCount = 240;
 
 export default function FrameSequence() {
     const canvasRef = useRef(null);
@@ -43,12 +43,11 @@ export default function FrameSequence() {
             const imgs = [];
             const promises = [];
 
-
             // Use main frames for all devices
             const basePath = '/frames_optimized';
-            const extension = 'webp';
+            const extension = 'png';
 
-            for (let i = 1; i <= frameCount; i++) {
+            for (let i = 0; i < frameCount; i++) {
                 const promise = new Promise((resolve, reject) => {
                     const img = new Image();
                     img.src = `${basePath}/frame_${i.toString().padStart(4, '0')}.${extension}`;
@@ -57,13 +56,18 @@ export default function FrameSequence() {
                         resolve(img);
                     };
                     img.onerror = reject;
-                    imgs[i - 1] = img; // Ensure order
+                    imgs[i] = img; // Ensure order
                 });
                 promises.push(promise);
             }
 
             try {
-                await Promise.all(promises);
+                // Wait for BOTH images to load AND a minimum of 3 seconds for the Welcome message
+                await Promise.all([
+                    Promise.all(promises),
+                    new Promise(resolve => setTimeout(resolve, 3000))
+                ]);
+
                 setImages(imgs);
                 setLoaded(true);
             } catch (err) {
@@ -136,8 +140,22 @@ export default function FrameSequence() {
     if (!loaded) {
         return (
             <div className={styles.loader}>
-                <div className={styles.spinner}></div>
-                <p>Loading Experience {Math.round(loadingProgress)}%</p>
+                <motion.div
+                    className={styles.welcomeContainer}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                >
+                    <h1 className={styles.welcomeText}>Welcome</h1>
+                    <motion.p
+                        className={styles.welcomeSubtext}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 0.8 }}
+                    >
+                        Roshan Reddy
+                    </motion.p>
+                </motion.div>
             </div>
         );
     }
