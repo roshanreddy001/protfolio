@@ -8,14 +8,14 @@ export const useSmoothScroll = () => {
 
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential easing
+            duration: 2.0, // Slower, heavier feel
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             direction: 'vertical',
             gestureDirection: 'vertical',
             smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
+            mouseMultiplier: 0.8, // Slightly resistant to feel "heavy"
+            smoothTouch: true, // Enable for touch devices too
+            touchMultiplier: 1.5,
         });
 
         lenisRef.current = lenis;

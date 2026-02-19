@@ -55,10 +55,12 @@
 }
 
 .quote {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.9);
+    /* Brighter */
     font-size: 1.1rem;
     font-style: italic;
     line-height: 1.6;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Links Section */
@@ -73,37 +75,40 @@
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1.25rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Brighter */
     border-radius: 99px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
+    /* Brighter */
     transition: all 0.3s ease;
     font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .socialLink:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .resumeLink {
-    background: rgba(var(--accent-rgb), 0.1);
-    border-color: rgba(var(--accent-rgb), 0.2);
+    background: rgba(96, 165, 250, 0.15);
+    border-color: rgba(96, 165, 250, 0.3);
     color: var(--accent);
 }
 
 .resumeLink:hover {
-    background: rgba(var(--accent-rgb), 0.2);
+    background: rgba(96, 165, 250, 0.25);
     border-color: var(--accent);
     color: white;
 }
 
 /* Bottom Bar */
 .bottomBar {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 2rem;
     display: flex;
     justify-content: space-between;
@@ -111,7 +116,8 @@
     flex-wrap: wrap;
     gap: 1rem;
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.7);
+    /* Brighter */
 }
 
 .madeWith {

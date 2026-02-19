@@ -1,96 +1,128 @@
+/* Premium Floating Glass Dock */
 .nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 90vw;
     z-index: 100;
-    padding: 2rem 0;
-    transition: padding 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+
+    /* The "9 Million Dollar" Glass Effect */
+    background: rgba(15, 15, 25, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.1),
+        0 1px 3px rgba(255, 255, 255, 0.05) inset;
+
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scrolled {
-    padding: 1rem 0;
-    background: rgba(10, 10, 20, 0.75);
-    /* Deep, rich background */
-    backdrop-filter: blur(24px) saturate(180%);
-    /* Heavy blur + saturation for "gloss" */
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    /* Crisper border */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    /* Depth shadow */
+    background: rgba(5, 5, 10, 0.8);
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(255, 255, 255, 0.08) inset;
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .navContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 3rem;
+    /* Space between logo and menu */
 }
 
 .logo {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: var(--foreground);
+    color: white;
+    letter-spacing: -0.02em;
+    cursor: pointer;
+    background: linear-gradient(to right, #fff, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: opacity 0.3s;
 }
 
-.accent {
-    color: var(--accent);
+.logo:hover {
+    opacity: 0.8;
 }
 
 .desktopMenu {
     display: flex;
-    gap: 2.5rem;
+    gap: 0.5rem;
+    /* Pill spacing */
+    align-items: center;
 }
 
 .navLink {
     position: relative;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    color: rgba(238, 241, 245, 0.8);
-    transition: color 0.3s;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .navLink:hover {
     color: white;
+    background: rgba(255, 255, 255, 0.1);
 }
 
+.activeLink {
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+}
+
+/* Remove old underline */
 .linkUnderline {
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0%;
-    height: 1px;
-    background: var(--accent);
-    transition: width 0.3s ease;
+    display: none;
 }
 
-.navLink:hover .linkUnderline {
-    width: 100%;
-}
-
+/* Mobile Toggle */
 .mobileToggle {
     display: none;
     background: none;
     border: none;
     color: white;
     cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background 0.3s;
 }
 
+.mobileToggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Menu Overlay */
 .mobileMenu {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(5, 5, 16, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(5, 5, 10, 0.98);
+    /* Almost opaque for readability */
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     z-index: 90;
     padding-top: 5rem;
     transform: translateY(-100%);
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -100,28 +132,40 @@
 }
 
 .mobileLinks {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
     width: 100%;
 }
 
 .mobileLink {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: var(--font-heading);
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    transition: color 0.3s ease;
-    display: block;
-    width: 100%;
+    transition: all 0.3s;
 }
 
 .mobileLink:hover {
-    color: var(--accent);
+    color: white;
+    transform: scale(1.05);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-
-
 @media (max-width: 768px) {
+    .nav {
+        top: 1.5rem;
+        padding: 0.75rem 1.25rem;
+        width: 90%;
+        justify-content: space-between;
+    }
+
+    .navContainer {
+        width: 100%;
+        gap: 0;
+    }
+
     .desktopMenu {
         display: none;
     }

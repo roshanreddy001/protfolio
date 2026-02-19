@@ -37,63 +37,64 @@
 }
 
 .welcomeText {
-    font-family: var(--font-heading);
-    font-size: 5rem;
-    font-weight: 300;
-    /* Thin and elegant */
+    font-family: 'Outfit', sans-serif;
+    /* Explicitly use Outfit for impact */
+    font-size: 4rem;
+    font-weight: 700;
     color: white;
     margin: 0;
-    letter-spacing: -0.02em;
-    /* Rich "Platinum/Titanium" Gradient */
-    background: linear-gradient(120deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    /* Soft glow for richness */
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+    letter-spacing: 0.05em;
+    /* Standard tracking for impact */
+    text-transform: uppercase;
+    text-align: center;
+
+    /* Pure White Glow */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    background: none;
+    -webkit-text-fill-color: white;
 }
 
 .welcomeSubtext {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    /* Slightly larger */
-    font-weight: 400;
-    letter-spacing: 0.4em;
-    /* Cinematic wide spacing */
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
     margin: 0;
-
-    /* Beautiful "Champagne/Silver" Gradient */
-    background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 50%, #f1f5f9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-
-    /* Soft Glow */
-    filter: drop-shadow(0 0 8px rgba(161, 196, 253, 0.4));
-
-    position: relative;
-    padding-left: 0.4em;
-    /* Optical balance for letter-spacing */
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-top: 1rem;
 }
 
 .loadingIndicator {
-    margin-top: 1rem;
+    margin-top: 2rem;
     font-family: var(--font-sans);
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.4);
-    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.loadingIndicator::before,
+.loadingIndicator::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 @media (max-width: 768px) {
     .welcomeText {
-        font-size: 3rem;
-        /* Smaller for mobile */
+        font-size: 2rem;
         padding: 0 1rem;
+        line-height: 1.2;
     }
 
     .welcomeSubtext {
-        font-size: 0.85rem;
+        font-size: 0.7rem;
         letter-spacing: 0.15em;
         line-height: 1.6;
         padding: 0 1rem;

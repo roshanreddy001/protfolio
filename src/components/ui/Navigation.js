@@ -10,7 +10,6 @@ const navLinks = [
     { name: 'About', href: '#about-me' },
     { name: 'Skills', href: '#skills' },
     { name: 'Work', href: '#projects' },
-    //{ name: 'Experience', href: '#experience' },
     { name: 'Education', href: '#education' },
     { name: 'Achievements', href: '#achievements' },
     { name: 'Contact', href: '#contact' },
@@ -20,23 +19,50 @@ export default function Navigation() {
     const { scrollY } = useScroll();
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('');
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         setIsScrolled(latest > 50);
     });
 
+    // Active Section Tracker using Intersection Observer
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px', // Active when element is in middle of viewport
+            threshold: 0
+        };
+
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Observe all sections
+        navLinks.forEach(link => {
+            const section = document.querySelector(link.href);
+            if (section) observer.observe(section);
+        });
+
+        // Also observe home
+        const homeSection = document.querySelector('#home');
+        if (homeSection) observer.observe(homeSection);
+
+        return () => observer.disconnect();
+    }, []);
+
     const scrollToSection = (e, href) => {
         e.preventDefault();
         const element = document.querySelector(href);
         if (element) {
-            // Use lenis if available globally, or native scroll
-            // Since we wrapped layout with Lenis (via useScroll hook in page.js, wait... 
-            // lenis instance is local to page.js? No, ideally it should be global context or window based if we want nav to control it.
-            // But Lenis hijacks native scroll, so element.scrollIntoView should work if Lenis is configured to intercept it, 
-            // or we use lenis instance to scroll. 
-            // For now, native scrollIntoView usually works with Lenis in standard config.
             element.scrollIntoView({ behavior: 'smooth' });
             setMobileMenuOpen(false);
+            setActiveSection(href.replace('#', ''));
         }
     };
 
@@ -44,27 +70,32 @@ export default function Navigation() {
         <>
             <motion.nav
                 className={clsx(styles.nav, { [styles.scrolled]: isScrolled })}
-                initial={{ y: -100 }}
-                animate={{ y: 0 }}
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-                <div className={clsx("container", styles.navContainer)}>
-                    <div className={styles.logo}>
-                        Roshan <span className={styles.accent}></span>
+                <div className={styles.navContainer}>
+                    <div
+                        className={styles.logo}
+                        onClick={(e) => scrollToSection(e, '#home')}
+                    >
+                        Roshan
                     </div>
 
                     <div className={styles.desktopMenu}>
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                onClick={(e) => scrollToSection(e, link.href)}
-                                className={styles.navLink}
-                            >
-                                {link.name}
-                                <span className={styles.linkUnderline} />
-                            </a>
-                        ))}
+                        {navLinks.map((link) => {
+                            const isActive = activeSection === link.href.replace('#', '');
+                            return (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={(e) => scrollToSection(e, link.href)}
+                                    className={clsx(styles.navLink, { [styles.activeLink]: isActive })}
+                                >
+                                    {link.name}
+                                </a>
+                            );
+                        })}
                     </div>
 
                     <button
@@ -78,12 +109,20 @@ export default function Navigation() {
 
             {/* Mobile Menu Overlay */}
             <div className={clsx(styles.mobileMenu, { [styles.open]: mobileMenuOpen })}>
+                <button
+                    className={styles.mobileToggle}
+                    style={{ position: 'absolute', top: '2rem', right: '2rem' }}
+                    onClick={() => setMobileMenuOpen(false)}
+                >
+                    <X size={28} />
+                </button>
+
                 <motion.div
                     className={styles.mobileLinks}
                     initial="closed"
                     animate={mobileMenuOpen ? "open" : "closed"}
                     variants={{
-                        open: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+                        open: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
                         closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
                     }}
                 >
@@ -95,7 +134,7 @@ export default function Navigation() {
                             className={styles.mobileLink}
                             variants={{
                                 open: { opacity: 1, y: 0 },
-                                closed: { opacity: 0, y: 20 }
+                                closed: { opacity: 0, y: 30 }
                             }}
                         >
                             {link.name}

@@ -17,7 +17,7 @@ export default function Hero() {
     const indicatorOpacity = useTransform(scrollY, [0, 50], [1, 0]);
 
     return (
-        <section className={styles.hero}>
+        <section id="home" className={styles.hero}>
             <div className="container">
                 <motion.div
                     className={styles.content}
@@ -28,17 +28,32 @@ export default function Hero() {
                     }}
                 >
                     <div className={styles.wrapper}>
-                        <h2 className={styles.title}>
+                        <motion.h2
+                            className={styles.title}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                        >
                             Full Stack Developer
-                        </h2>
+                        </motion.h2>
 
-                        <h1 className={`gradient-text ${styles.name}`}>
+                        <motion.h1
+                            className={`gradient-text ${styles.name}`}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        >
                             Roshna Reddy Basava
-                        </h1>
+                        </motion.h1>
 
-                        <p className={styles.tagline}>
+                        <motion.p
+                            className={styles.tagline}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                        >
                             Building scalable web applications and intelligent systems using modern web technologies and machine learning.
-                        </p>
+                        </motion.p>
 
                         <div className={styles.actions}>
                             <Button

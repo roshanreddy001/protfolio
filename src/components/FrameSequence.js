@@ -170,14 +170,14 @@ export default function FrameSequence() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                 >
-                    <h1 className={styles.welcomeText}>Welcome,buddy!</h1>
+                    <h1 className={styles.welcomeText}>ARCHITECTING DIGITAL EXCELLENCE</h1>
                     <motion.p
                         className={styles.welcomeSubtext}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.8 }}
                     >
-                        Introducting Roshan Reddy Basava
+                        Roshan Reddy Basava | Full Stack & AI Engineer
                     </motion.p>
 
                     {/* Subtle Loading Indicator */}
