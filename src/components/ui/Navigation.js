@@ -25,6 +25,16 @@ export default function Navigation() {
         setIsScrolled(latest > 50);
     });
 
+    // Body Scroll Lock
+    useEffect(() => {
+        if (mobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [mobileMenuOpen]);
+
     // Active Section Tracker using Intersection Observer
     useEffect(() => {
         const observerOptions = {
@@ -108,25 +118,30 @@ export default function Navigation() {
             </motion.nav>
 
             {/* Mobile Menu Overlay */}
-            <div className={clsx(styles.mobileMenu, { [styles.open]: mobileMenuOpen })}>
+            <motion.div
+                className={clsx(styles.mobileMenu, { [styles.open]: mobileMenuOpen })}
+                initial={false}
+                animate={mobileMenuOpen ? "open" : "closed"}
+                variants={{
+                    open: {
+                        y: "0%",
+                        transition: { type: "spring", stiffness: 300, damping: 30, staggerChildren: 0.07, delayChildren: 0.2 }
+                    },
+                    closed: {
+                        y: "-100%",
+                        transition: { type: "spring", stiffness: 300, damping: 30, staggerChildren: 0.05, staggerDirection: -1 }
+                    }
+                }}
+            >
                 <button
-                    className={styles.mobileToggle}
-                    style={{ position: 'absolute', top: '2rem', right: '2rem' }}
+                    className={styles.closeToggle}
                     onClick={() => setMobileMenuOpen(false)}
                 >
-                    <X size={28} />
+                    <X size={32} />
                 </button>
 
-                <motion.div
-                    className={styles.mobileLinks}
-                    initial="closed"
-                    animate={mobileMenuOpen ? "open" : "closed"}
-                    variants={{
-                        open: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
-                        closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
-                    }}
-                >
-                    {navLinks.map((link) => (
+                <motion.div className={styles.mobileLinks}>
+                    {navLinks.map((link, index) => (
                         <motion.a
                             key={link.name}
                             href={link.href}
@@ -134,14 +149,26 @@ export default function Navigation() {
                             className={styles.mobileLink}
                             variants={{
                                 open: { opacity: 1, y: 0 },
-                                closed: { opacity: 0, y: 30 }
+                                closed: { opacity: 0, y: 50 }
                             }}
                         >
-                            {link.name}
+                            <span className={styles.linkIndex}>0{index + 1}</span>
+                            <span className={styles.linkText}>{link.name}</span>
                         </motion.a>
                     ))}
                 </motion.div>
-            </div>
+
+                {/* Decorative Footer in Menu */}
+                <motion.div
+                    className={styles.menuFooter}
+                    variants={{
+                        open: { opacity: 1, transition: { delay: 0.5 } },
+                        closed: { opacity: 0 }
+                    }}
+                >
+                    <p>Designed by Roshan</p>
+                </motion.div>
+            </motion.div>
         </>
     );
 }

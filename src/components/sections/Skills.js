@@ -4,11 +4,10 @@ import { motion } from 'framer-motion';
 import styles from './Skills.module.css';
 
 const skills = [
-    { name: 'HTML|CSS|JAVASCRIPT', level: 90 },
-    { name: 'React', level: 80 },
-    { name: 'Node.js|express', level: 80 },
-    { name: 'Python|TensorFlow|matplotlib|numpy', level: 90 },
-    { name: 'SQL|MONGODB|MySQL', level: 90 },
+    { name: 'HTML | CSS | JAVASCRIPT | React', level: 90 },
+    { name: 'Node.js | express', level: 80 },
+    { name: 'Python |  TensorFlow | matplotlib | numpy', level: 90 },
+    { name: 'SQL | MONGODB | MySQL', level: 90 },
 ];
 
 const SkillBar = ({ name, level, index }) => {

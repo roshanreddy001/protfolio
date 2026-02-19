@@ -1,6 +1,7 @@
 import { Inter, Outfit, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import LoadingBar from "@/components/ui/LoadingBar"; // Will implement later or skip if simple
+import MobileNotice from "@/components/ui/MobileNotice";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-heading" });
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${outfit.variable} ${greatVibes.variable}`}>
         {children}
+        <MobileNotice />
       </body>
     </html>
   );
