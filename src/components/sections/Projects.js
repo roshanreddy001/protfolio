@@ -22,14 +22,14 @@ const projects = [
         link: "#",
         github: "#"
     },
-    {
+    /*{
         title: "Quantum Flow", // Placeholder
         date: "2024",
         description: "Generative art visualizer using complex algorithms and fluid dynamics.",
         tech: ["Canvas API", "GLSL", "Node.js"],
         link: "#",
         github: "#"
-    }
+    }*/
 ];
 
 export default function Projects() {

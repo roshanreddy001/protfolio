@@ -25,15 +25,15 @@ export default function AboutMe() {
                         transition={{ delay: 0.2 }}
                     >
                         <p className={styles.text}>
-                            Full Stack Developer | AI Systems Builder
+                            Full Stack Developer | AI Enthusiast
                         </p>
                         <p className={styles.text}>
-                            I design and develop high-performance full stack applications powered by intelligent systems. With hands-on experience in MERN stack development, database architecture, and Machine Learning implementation, I focus on building scalable platforms that merge software engineering with AI-driven decision making.
+                            I am a passionate developer building full stack applications powered by intelligent systems. Focusing on MERN stack development, database architecture, and Machine Learning concepts, I strive to build scalable platforms that merge software engineering with AI-driven ideas.
                         </p>
                         <p className={styles.text}>
-                            From integrating existing LLMs into real-world applications to developing responsive user interfaces and optimized backend systems, I approach every project with performance, clarity, and long-term scalability in mind.
+                            From exploring LLM integration in real-world applications to developing responsive user interfaces and efficient backend systems, I approach every project with curiosity, clarity, and a desire to learn.
 
-                            My goal is to engineer systems that learn, adapt, and solve meaningful real-world problems.
+                            My goal is to grow as an engineer and contribute to systems that solve meaningful real-world problems.
                         </p>
                     </motion.div>
                 </div>

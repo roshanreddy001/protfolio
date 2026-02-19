@@ -34,7 +34,7 @@ export default function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                         >
-                            Full Stack Developer
+                            Aspiring Full Stack Developer
                         </motion.h2>
 
                         <motion.h1
@@ -52,7 +52,7 @@ export default function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                         >
-                            Building scalable web applications and intelligent systems using modern web technologies and machine learning.
+                            Passionate about building modern web applications and exploring intelligent systems.
                         </motion.p>
 
                         <div className={styles.actions}>

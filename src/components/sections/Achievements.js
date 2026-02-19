@@ -6,21 +6,22 @@ import { Award, Code, Cpu } from 'lucide-react'; // Example icons
 import styles from './Achievements.module.css';
 
 const achievements = [
-    {
+    /*{
         title: "Hackathon Winner",
         description: "1st Place in National AI Hackathon 2024 for 'Project Vision'.",
         icon: <Award size={32} color="var(--accent)" />
-    },
+    },*/
     {
         title: "AWS Certified",
         description: "AWS Certified Solutions Architect – Associate.",
         icon: <Cpu size={32} color="var(--accent)" />
     },
+    /*
     {
         title: "CodeRank 5 Star",
         description: "Top 1% in competitive programming on CodeRank.",
         icon: <Code size={32} color="var(--accent)" />
-    }
+    }*/
 ];
 
 export default function Achievements() {
