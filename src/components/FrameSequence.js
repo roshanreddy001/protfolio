@@ -10,7 +10,27 @@ export default function FrameSequence() {
     const canvasRef = useRef(null);
     const [images, setImages] = useState([]);
     const [loaded, setLoaded] = useState(false);
-    const [loadingProgress, setLoadingProgress] = useState(0);
+    const [loadingProgress, setLoadingProgress] = useState(0); // For background loading
+    const [welcomeProgress, setWelcomeProgress] = useState(0); // For introduction screen
+
+    // Simulate loading progress for the welcome screen
+    useEffect(() => {
+        if (loaded) return;
+
+        const interval = setInterval(() => {
+            setWelcomeProgress(prev => {
+                if (prev >= 99) {
+                    clearInterval(interval);
+                    return 99;
+                }
+                // Check if we are close to the end, slow down
+                const increment = prev > 80 ? 0.5 : 2;
+                return Math.min(prev + increment, 99);
+            });
+        }, 60); // Updates every 60ms => ~3s to reach 99
+
+        return () => clearInterval(interval);
+    }, [loaded]);
 
     const { scrollYProgress } = useScroll(); // Global scroll progress
 
@@ -70,7 +90,8 @@ export default function FrameSequence() {
                 ]);
 
                 setImages([...imgs]); // Set initial images
-                setLoaded(true); // Unlock UI
+                setWelcomeProgress(100); // Complete visual progress
+                setTimeout(() => setLoaded(true), 500); // Small delay to show 100%
 
                 // 2. Load Remaining Frames in Batches
                 const batchSize = 20;
@@ -187,7 +208,7 @@ export default function FrameSequence() {
                         animate={{ opacity: 0.6 }}
                         transition={{ delay: 1 }}
                     >
-                        Initializing... {loadingProgress}%
+                        Initializing... {Math.floor(welcomeProgress)}%
                     </motion.div>
                 </motion.div>
             </div>
