@@ -8,19 +8,19 @@ const education = [
         degree: "INTEGRATED M.Tech in Computer Science",
         institution: "Vellore Institute of Technology", // Placeholder
         year: "2023 - 2028",
-        details: "Specializing in AI/ML. GPA: 8.61 Relevant coursework: Data Structure & Algorithms,Web Development, Machine Learning, Deep Learning."
+        details: "Specializing in AI/ML. GPA: 8.61(updated) Relevant coursework: Data Structure & Algorithms,Web Development, Machine Learning, Deep Learning."
     },
     {
         degree: "Intermediate(MPC)",
         institution: "Srichaitanya Junior College",
         year: "2021 - 2023",
-        details: "Percentage: 89%"
+        //details: "Percentage: 89%"
     },
     {
         degree: "10th Grade",
         institution: "bhashyam public School",
         year: "2021",
-        details: "Percentage: 100%"
+        //details: "Percentage: 100%"
     }
 ];
 
