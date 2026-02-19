@@ -22,7 +22,7 @@ export default function Footer() {
                     {/* Social Links */}
                     <div className={styles.linkSection}>
                         <a
-                            href="https://github.com/roshanreddy001"
+                            href="#"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.socialLink}
