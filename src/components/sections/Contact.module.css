@@ -158,6 +158,7 @@
 
     .heading {
         font-size: 2.5rem;
+        text-align: center;
     }
 
     .flexWrapper {
@@ -167,7 +168,17 @@
 
     .info,
     .form {
-        min-width: 100%;
+        min-width: 0;
+        /* Reset */
+        width: 100%;
+    }
+
+    .info {
+        text-align: center;
+    }
+
+    .contactDetails {
+        align-items: center;
     }
 
     .row {
@@ -177,5 +188,9 @@
 
     .form {
         padding: 1.5rem;
+    }
+
+    .inputGroup {
+        margin-bottom: 1.5rem;
     }
 }

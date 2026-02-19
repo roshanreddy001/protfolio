@@ -42,36 +42,60 @@ export default function FrameSequence() {
         const loadImages = async () => {
             const imgs = [];
             const promises = [];
-
-            // Use main frames for all devices
             const basePath = '/frames_optimized';
             const extension = 'png';
 
-            for (let i = 0; i < frameCount; i++) {
-                const promise = new Promise((resolve, reject) => {
-                    const img = new Image();
-                    img.src = `${basePath}/frame_${i.toString().padStart(4, '0')}.${extension}`;
-                    img.onload = () => {
-                        setLoadingProgress(prev => prev + (1 / frameCount) * 100);
-                        resolve(img);
-                    };
-                    img.onerror = reject;
-                    imgs[i] = img; // Ensure order
-                });
-                promises.push(promise);
+            // Priority Batch: First 50 frames (enough for initial scroll)
+            const priorityCount = 50;
+
+            // Helper to load a single image
+            const loadImage = (index) => new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = `${basePath}/frame_${index.toString().padStart(4, '0')}.${extension}`;
+                img.onload = () => resolve(img);
+                img.onerror = reject;
+                imgs[index] = img;
+            });
+
+            // 1. Load Priority Batch
+            for (let i = 0; i < priorityCount; i++) {
+                promises.push(loadImage(i));
             }
 
             try {
-                // Wait for BOTH images to load AND a minimum of 3 seconds for the Welcome message
+                // Wait for Priority frames + Minimum Delay
                 await Promise.all([
                     Promise.all(promises),
                     new Promise(resolve => setTimeout(resolve, 3000))
                 ]);
 
-                setImages(imgs);
-                setLoaded(true);
+                setImages([...imgs]); // Set initial images
+                setLoaded(true); // Unlock UI
+
+                // 2. Load Remaining Frames in Batches
+                const batchSize = 20;
+                for (let i = priorityCount; i < frameCount; i += batchSize) {
+                    const batchPromises = [];
+                    const end = Math.min(i + batchSize, frameCount);
+
+                    for (let j = i; j < end; j++) {
+                        batchPromises.push(
+                            loadImage(j).catch(e => {
+                                console.warn(`Failed frame ${j}`, e);
+                                return null;
+                            }) // Catch errors to keep batch moving
+                        );
+                    }
+
+                    await Promise.all(batchPromises);
+                    setImages([...imgs]); // Update state incrementally
+                    setLoadingProgress(Math.round((end / frameCount) * 100));
+                    console.log(`Loaded frames ${i} to ${end}`);
+                }
+
             } catch (err) {
                 console.error("Failed to load frames", err);
+                setLoaded(true); // Fallback: unlock anyway on error
             }
         };
 
@@ -119,7 +143,7 @@ export default function FrameSequence() {
         renderFrame(0);
 
         return () => unsubscribe();
-    }, [loaded, frameIndex]);
+    }, [loaded, frameIndex, images]);
 
     // Handle Resize
     useEffect(() => {
@@ -155,15 +179,40 @@ export default function FrameSequence() {
                     >
                         Introducting Roshan Reddy Basava
                     </motion.p>
+
+                    {/* Subtle Loading Indicator */}
+                    <motion.div
+                        className={styles.loadingIndicator}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.6 }}
+                        transition={{ delay: 1 }}
+                    >
+                        Initializing... {loadingProgress}%
+                    </motion.div>
                 </motion.div>
             </div>
         );
     }
 
     return (
-        <canvas
-            ref={canvasRef}
-            className={styles.canvas}
-        />
+        <>
+            <canvas
+                ref={canvasRef}
+                className={styles.canvas}
+            />
+
+            {/* Persistent Background Loader - Shows while remaining frames load */}
+            {loadingProgress < 100 && (
+                <motion.div
+                    className={styles.persistentIndicator}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <div className={styles.spinner}></div>
+                    Optimizing... {loadingProgress}%
+                </motion.div>
+            )}
+        </>
     );
 }

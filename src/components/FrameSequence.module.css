@@ -77,13 +77,76 @@
     /* Optical balance for letter-spacing */
 }
 
+.loadingIndicator {
+    margin-top: 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+}
+
 @media (max-width: 768px) {
     .welcomeText {
-        font-size: 3.5rem;
+        font-size: 3rem;
+        /* Smaller for mobile */
+        padding: 0 1rem;
     }
 
     .welcomeSubtext {
-        font-size: 0.9rem;
-        letter-spacing: 0.2em;
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        line-height: 1.6;
+        padding: 0 1rem;
+    }
+
+    /* Move persistent indicator to bottom center on mobile */
+    .persistentIndicator {
+        bottom: 1.5rem;
+        right: 50%;
+        transform: translateX(50%) !important;
+        /* Override framer motion x */
+        width: max-content;
+        padding: 0.6rem 1rem;
+        font-size: 0.75rem;
+        background: rgba(10, 10, 31, 0.9);
+        /* More opaque for readability */
+    }
+}
+
+.persistentIndicator {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.2rem;
+    background: rgba(10, 10, 31, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--accent);
+    /* Blue accent */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }
