@@ -1,41 +1,61 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Layout, Server, Database, BrainCircuit } from 'lucide-react';
 import styles from './Skills.module.css';
 
-const skills = [
-    { name: 'HTML | CSS | JAVASCRIPT | React', level: 90 },
-    { name: 'Node.js | express', level: 80 },
-    { name: 'Python |  TensorFlow | matplotlib | numpy', level: 90 },
-    { name: 'SQL | MONGODB | MySQL', level: 90 },
+const categories = [
+    {
+        title: 'Frontend',
+        icon: <Layout size={28} className={styles.categoryIcon} />,
+        skills: [
+            { name: 'HTML5', icon: '/icons/HTML.png', tagline: 'Semantic web structure' },
+            { name: 'CSS3', icon: '/icons/CSS.png', tagline: 'Styling & Layouts' },
+            { name: 'JavaScript', icon: '/icons/JS.png', tagline: 'Dynamic UI logic' },
+            { name: 'React', icon: '/icons/React.svg', tagline: 'Component logic' },
+            { name: 'Bootstrap', icon: '/icons/BOOTSTRAP.png', tagline: 'Responsive design' }
+        ]
+    },
+    {
+        title: 'Backend',
+        icon: <Server size={28} className={styles.categoryIcon} />,
+        skills: [
+            { name: 'Node.js', icon: '/icons/Node.svg', tagline: 'JS Runtime' },
+            { name: 'Express', icon: '/icons/Express.svg', tagline: 'Web framework' },
+            { name: 'Spring Boot', icon: '/icons/SPRINGBOOT.png', tagline: 'Backend APIs' },
+            { name: 'Hibernate', icon: '/icons/hibernate.png', tagline: 'ORM mapping' }
+        ]
+    },
+    {
+        title: 'Database',
+        icon: <Database size={28} className={styles.categoryIcon} />,
+        skills: [
+            { name: 'MySQL', icon: '/icons/MySQL.png', tagline: 'Relational database' },
+            { name: 'MongoDB', icon: '/icons/MongoDB.png', tagline: 'NoSQL database' },
+            { name: 'PostgreSQL', icon: '/icons/SQL.svg', tagline: 'Advanced SQL' }
+        ]
+    }
+    /*
+    ,{
+        title: 'AI / ML',
+        icon: <BrainCircuit size={28} className={styles.categoryIcon} />,
+        skills: [
+            { name: 'Python', icon: '/icons/Python.svg', tagline: 'Data scripting' },
+            { name: 'TensorFlow', icon: '/icons/TensorFlow.svg', tagline: 'Deep learning rules' },
+            { name: 'NumPy', icon: '/icons/NumPy.svg', tagline: 'Array computation' },
+            { name: 'Matplotlib', icon: '/icons/Matplotlib.svg', tagline: 'Data visualization' },
+            { name: 'Python DS', icon: '/icons/Python.svg', tagline: 'Data Science' },
+        ]
+    }
+    */
 ];
-
-const SkillBar = ({ name, level, index }) => {
-    return (
-        <div className={styles.skillContainer}>
-            <div className={styles.skillHeader}>
-                <span>{name}</span>
-                <span className={styles.percentage}>{level}%</span>
-            </div>
-            <div className={styles.track}>
-                <motion.div
-                    className={styles.bar}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.5, delay: index * 0.1, ease: "easeOut" }}
-                />
-            </div>
-        </div>
-    );
-}
 
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.1
+            staggerChildren: 0.2
         }
     }
 };
@@ -45,7 +65,7 @@ const itemVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease: "easeOut" }
+        transition: { duration: 0.6, ease: "easeOut" }
     }
 };
 
@@ -61,6 +81,7 @@ export default function Skills() {
                 >
                     Technical Expertise
                 </motion.h2>
+
                 <motion.div
                     className={styles.grid}
                     variants={containerVariants}
@@ -68,25 +89,32 @@ export default function Skills() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
                 >
-                    {skills.map((skill, index) => (
-                        <motion.div key={skill.name} variants={itemVariants}>
-                            <div className={styles.skillContainer}>
-                                <div className={styles.skillHeader}>
-                                    <span>{skill.name}</span>
-                                    <span className={styles.percentage}>{skill.level}%</span>
+                    {categories.map((category) => {
+                        return (
+                            <motion.div key={category.title} variants={itemVariants} className={styles.categoryContainer}>
+                                <div className={styles.categoryHeader}>
+                                    {category.icon}
+                                    <span className={styles.categoryTitle}>{category.title}</span>
                                 </div>
-                                <div className={styles.track}>
-                                    <motion.div
-                                        className={styles.bar}
-                                        initial={{ width: 0 }}
-                                        whileInView={{ width: `${skill.level}%` }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-                                    />
+                                <div className={styles.marqueeContainer}>
+                                    <div className={styles.marqueeContent}>
+                                        {category.skills.map((skill, idx) => (
+                                            <div key={`${skill.name}-${idx}`} className={styles.skillCard} data-tagline={skill.tagline}>
+                                                <div className={styles.skillIconWrapper}>
+                                                    <img 
+                                                        src={skill.icon} 
+                                                        alt={skill.name} 
+                                                        className={styles.skillIcon} 
+                                                    />
+                                                </div>
+                                                <span className={styles.skillName}>{skill.name}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        );
+                    })}
                 </motion.div>
             </div>
         </section>
